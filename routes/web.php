@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,11 +15,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('home',[
+        "title" => "Home"
+    ]);
 });
 Route::get('/about', function () {
-    return view('About');
+    return view('About', [
+        "title" => "About",
+        "nama" => "Mozuki",
+        "email" => "fauzilhokki@gmail.com",
+        "gambar" => "Mozu.png"
+    ]);
 });
 Route::get('/gallery', function () {
-    return view('Gallery');
+    return view('Gallery',[
+        "title" => "Gallery"
+    ]);
 });
+Route::resource('/contacts', ContactController::class);
